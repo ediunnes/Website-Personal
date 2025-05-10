@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Sederhana</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    
+    <header>
+        <marquee behavior="scroll" direction="left" scrollamount="10">
+            <h1>Selamat Datang di Website Sederhana Saya</h1>
+        </marquee>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#beranda">Beranda</a></li>
+            <li><a href="#tentang">Tentang</a></li>
+            <li><a href="#layanan">Layanan</a></li>
+            <li><a href="#kontak">Kontak</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="beranda">
+            <h2>Beranda</h2>
+            <p>Ini adalah halaman beranda website sederhana ini. Anda bisa menambahkan konten menarik di sini.</p>
+            <button id="tombolSapa">Sapa Saya!</button>
+        </section>
+
+        <section id="tentang" class="hidden">
+            <h2>Tentang Kami</h2>
+            <p>Halaman ini berisi informasi tentang kami. Ceritakan lebih lanjut tentang diri Anda atau organisasi Anda.</p>
+        </section>
+
+        <section id="layanan" class="hidden">
+            <h2>Layanan Kami</h2>
+            <ul>
+                <li>Layanan 1</li>
+                <li>Layanan 2</li>
+                <li>Layanan 3</li>
+            </ul>
+        </section>
+
+        <section id="kontak" class="hidden">
+            <h2>Kontak</h2>
+            <p>Anda dapat menghubungi kami melalui formulir kontak atau informasi kontak berikut:</p>
+            <address>
+                Email: ediunnes@gmail.com<br>
+                Telepon: 087884970537
+            </address>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Website Sederhana. Hak Cipta Dilindungi.</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('nav a');
+            const sections = document.querySelectorAll('main section');
+
+            function showSection(id) {
+                sections.forEach(section => {
+                    section.classList.add('hidden');
+                });
+                const targetSection = document.getElementById(id);
+                if (targetSection) {
+                    targetSection.classList.remove('hidden');
+                }
+            }
+
+            // Tampilkan beranda saat halaman dimuat
+            showSection('beranda');
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1); // Hapus tanda '#'
+                    showSection(targetId);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
